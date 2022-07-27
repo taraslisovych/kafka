@@ -1,0 +1,13 @@
+[Unit]
+Description=Start Kafka service
+Requires=syslog.service
+After=syslog.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/ubuntu/kafka/bin/kafka-server-start.sh -daemon /home/ubuntu/kafka/config/server.properties
+ExecStop=/home/ubuntu/kafka/bin/kafka-server-stop.sh
+
+[Install]
+WantedBy=multi-user.target

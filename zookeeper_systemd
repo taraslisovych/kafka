@@ -1,0 +1,13 @@
+[Unit]
+Description=Start Zookeeper service
+Requires=syslog.service
+After=syslog.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/home/ubuntu/zookeeper/bin/zookeeper-server-start.sh -daemon /home/ubuntu/zookeeper/config/zookeeper.properties
+ExecStop=/home/ubuntu/zookeeper/bin/zookeeper-server-stop.sh
+
+[Install]
+WantedBy=multi-user.target
